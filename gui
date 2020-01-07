@@ -1,0 +1,73 @@
+import tkinter as tk
+from tkinter import ttk
+
+
+
+
+HEIGHT = 700
+WIDTH = 950
+
+root = tk.Tk()
+
+
+fileVar = tk.IntVar()
+placeVar = tk.IntVar()
+
+def sel():
+   selection = "You selected the option " + str(fileVar.get())
+   print(selection)
+
+canvas = tk.Canvas (root, height = HEIGHT, width = WIDTH)
+canvas.pack()
+title = tk.Label(root, text = "Athletic Scraper", font = ('Roboto', 20, 'underline'))
+title.place(relx=0.04, rely=-0.05, relwidth = 0.2, relheight=0.2)
+
+logFrame = tk.Frame(root, bg = 'white', highlightbackground="black", highlightthickness=1)
+logFrame.place(relx=0.05, rely=0.12, relwidth = 0.62, relheight = 0.62)
+
+log = tk.Label(logFrame, bg = 'white', text = "This is a label")
+log.place(relwidth = 1, relheight = 1)
+
+ # -- Configuration Settings   
+ 
+configFrame = tk.Frame(root, bg = 'white', highlightbackground="black", highlightthickness=1)
+configFrame.place(relx=0.7, rely = 0.12, relwidth = 0.28, relheight = 0.4)
+
+configTitle = tk.Label(configFrame, bg ='white', text = "Configuration", font = ('roboto', 15, 'underline'))
+configTitle.place(relx=0.2, rely = 0.05, relwidth = 0.6, relheight = 0.1 )
+
+configIdLabel = tk.Label(configFrame, bg ='white', text = "School ID:", font = ('roboto', 12, 'bold'))
+configIdLabel.place(relx=0.07, rely = 0.19)
+
+configId = tk.Entry(configFrame, bg = 'white')
+configId.place(relx=0.4, rely = 0.2)
+
+configPlace = tk.Checkbutton(configFrame, variable = placeVar, bg = 'white', text = 'Enable Placing?', font = ('roboto', 12, 'bold'))
+configPlace.place(relx=0.1, rely = 0.7)
+
+#Individual vs Group Selector
+configSelector = tk.Frame(configFrame, bg = 'white', highlightbackground="black", highlightthickness=1)
+configSelector.place(relx=0.02, rely = 0.35, relwidth = 0.96, relheight = 0.3)
+
+configIndividual = tk.Radiobutton(configSelector, command = sel, variable = fileVar, value = 1, bg = 'white', text = 'Individuals', font = ('roboto', 12, 'bold'))
+configIndividual.place(relx=0.1, rely= 0.1)
+configGroup = tk.Radiobutton(configSelector, command = sel, variable = fileVar, value = 2, bg = 'white', text = 'Group', font = ('roboto', 12, 'bold'))
+configGroup.place(relx=0.1, rely= 0.5)
+
+
+
+#-- Bottom Buttons --
+controlFrame = tk.Frame(root, bg = 'white', highlightbackground="black", highlightthickness=1)
+controlFrame.place(relx = 0.05, rely = 0.77, relwidth = 0.62, relheight = 0.2)
+
+getAthletes = tk.Button(controlFrame, text = "Grab Athletes", bg = '#add8e6', font = ('roboto', 12, 'bold'))
+getAthletes.place(relx = 0.1, rely= 0.2, relwidth = 0.3, relheight= 0.2)
+exportData = tk.Button(controlFrame, text = "Export Data", bg = '#add8e6', font = ('roboto', 12, 'bold'))
+exportData.place(relx = 0.6, rely= 0.2, relwidth = 0.3, relheight= 0.2)
+
+
+helpFrame = tk.Frame(root, bg = 'white', highlightbackground="black", highlightthickness=1)
+helpFrame.place(relx = 0.7, rely=0.77, relwidth = 0.28, relheight = 0.2)
+
+root.mainloop()
+    
