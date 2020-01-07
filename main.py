@@ -1,4 +1,5 @@
 import bs4 as bs
+import lxml
 import requests
 import re
 import os
@@ -6,7 +7,7 @@ import os
 
 
 
-
+debug = True
 
 def grabPlace(result, nTitle):
     totalPlace = 1
@@ -284,6 +285,5 @@ while True:
  placeCheck = input()
  fetchAthlete()
  exportData()
-
 
 
